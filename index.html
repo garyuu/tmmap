@@ -7,6 +7,9 @@
             canvas {
                 border: 1px black solid;
             }
+            .mapblock {
+                display: inline-block;
+            }
         </style>
     </head>
     <body>
@@ -24,26 +27,31 @@
             ShowCanal: <input id="canal" type="checkbox" onchange="onShowCanal(this)" />
         </label>
         <br />
-        <div>
+        <div class="mapblock">
             <label>Base Game</label>
+            <br />
             <canvas id="bg1"></canvas>
         </div>
-        <div>
+        <div class="mapblock">
             <label>Base Game Revised</label>
+            <br />
             <canvas id="bg2"></canvas>
         </div>
         <br />
-        <div>
+        <div class="mapblock">
             <label>Fire and Ice</label>
+            <br />
             <canvas id="fi"></canvas>
         </div>
         <br />
-        <div>
+        <div class="mapblock">
             <label>Merchant of the Seas(Fjords)</label>
+            <br />
             <canvas id="ms1"></canvas>
         </div>
-        <div>
+        <div class="mapblock">
             <label>Merchant of the Seas(Loon Lakes)</label>
+            <br />
             <canvas id="ms2"></canvas>
         </div>
     </body>
