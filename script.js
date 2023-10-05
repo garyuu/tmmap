@@ -111,6 +111,21 @@ const map = {
             [4, 3, 0, 6, 0, 0, 0, 6, 1, 3, 2, 4],
         ]
     },
+    aoi: {
+        type: 1,
+        canal: [ ],
+        map: [
+            [6, 0, 5, 4, 3, 1, 7, 0, 5, 4, 3, 2, 0],
+            [7, 0, 0, 6, 5, 6, 2, 0, 6, 7, 4, 0, 4],
+            [1, 5, 4, 0, 7, 3, 4, 0, 0, 1, 0, 0, 1],
+            [2, 7, 1, 0, 2, 1, 0, 4, 0, 0, 3, 7, 6],
+            [3, 6, 3, 2, 0, 0, 0, 6, 7, 5, 1, 2, 3],
+            [4, 0, 0, 0, 5, 7, 0, 2, 3, 0, 4, 5, 1],
+            [5, 0, 3, 4, 0, 6, 3, 0, 0, 0, 0, 0, 0],
+            [0, 2, 5, 0, 1, 4, 2, 1, 4, 5, 6, 4, 0],
+            [6, 7, 1, 0, 2, 7, 3, 5, 6, 7, 1, 2, 3],
+        ]
+    },
 }
 
 const raceValueMap = [
@@ -128,7 +143,7 @@ const PADDING = 8;
 const EDGE = 32;
 const SIN60 = Math.sin(Math.PI / 3);
 const SIN60EDGE = EDGE * SIN60;
-const CANVAS_WIDTH = PADDING * 2 + SIN60EDGE * 26;
+const CANVAS_WIDTH = PADDING * 2 + SIN60EDGE * 27;
 const CANVAS_HEIGHT = PADDING * 2 + EDGE * 14;
 
 let race, showCanal;
@@ -141,7 +156,7 @@ function getColor(rgbArray, diff) {
     return `rgb(${calculateDiff(rgbArray[0], diff)},${calculateDiff(rgbArray[1], diff)},${calculateDiff(rgbArray[2], diff)})`;
 }
 
-function getXY(i, j, type) { // type 0 = short, 1 = long
+function getXY(i, j, type) { // type 0 = short(a little offset at left), 1 = long(no offset at left)
     return {
         x: (i * 2 + 1 + (j & 1 ^ 1 ^ type)) * SIN60EDGE + PADDING,
         y: (j * 1.5 + 1) * EDGE + PADDING,
@@ -217,6 +232,7 @@ function drawMap(name) {
 }
 
 function drawAllMap() {
+    drawMap('aoi');
     drawMap('bg1');
     drawMap('bg2');
     drawMap('fi');
